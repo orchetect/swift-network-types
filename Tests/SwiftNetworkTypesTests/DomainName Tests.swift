@@ -8,7 +8,7 @@ import SwiftNetworkTypes
 import Testing
 
 @Suite
-struct Abstractions_DomainNameTests {
+struct DomainName_Tests {
     @Test
     func initString_OneTLDComponent_NoPrefix() {
         #expect(DomainName("apple.com").components == ["apple", "com"])

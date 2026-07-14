@@ -4,26 +4,24 @@
 //  © 2026 Steffan Andrews • Licensed under MIT License
 //
 
-#if canImport(Foundation)
-
-import Foundation
-
-/// Email Address Format Validation.
+/// A type representing an email address.
 public struct EmailAddress {
     /// Email address.
     nonisolated
     public let string: String
 
-    /// Email Address Format Validation.
+    /// Initialize from an email address string without performing validation.
     nonisolated
-    public init(_ string: String) {
-        self.string = string
+    public init(verbatim address: String) {
+        self.string = address
     }
 }
 
 extension EmailAddress: Equatable { }
 
 extension EmailAddress: Hashable { }
+
+extension EmailAddress: Sendable { }
 
 extension EmailAddress: Identifiable {
     nonisolated
@@ -37,7 +35,7 @@ extension EmailAddress: Codable {
     public init(from decoder: any Decoder) throws {
         let container = try decoder.singleValueContainer()
         let string = try container.decode(String.self)
-        self.init(string)
+        self.init(verbatim: string)
     }
 
     nonisolated
@@ -47,14 +45,9 @@ extension EmailAddress: Codable {
     }
 }
 
-extension EmailAddress: Sendable { }
-
 extension EmailAddress: CustomStringConvertible {
     nonisolated
     public var description: String {
         string
     }
 }
-
-
-#endif

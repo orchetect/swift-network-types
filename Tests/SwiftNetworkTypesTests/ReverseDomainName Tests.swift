@@ -8,7 +8,7 @@ import SwiftNetworkTypes
 import Testing
 
 @Suite
-struct ReverseDomainNameTests {
+struct ReverseDomainName_Tests {
     @Test
     func initString_OneTLDComponent_NoPrefix() {
         #expect(ReverseDomainName("com.apple").components == ["com", "apple"])

@@ -9,10 +9,12 @@
 import Foundation
 
 extension EmailAddress {
-    /// Internal:
-    /// Email Address RegEx Validation Pattern.
+    /// Initialize by validating an email address, throwing an error if the address is not valid.
     nonisolated
-    private static let emailRegEx = #"^([a-zA-Z0-9!#$%&'*+-/=?^_.{}|~]{1,64})@([a-zA-Z0-9.-]+\.[a-zA-Z]{2,63})$"#
+    public init(_ address: String) throws(ValidationError) {
+        self.string = address
+        guard isValid else { throw .invalid }
+    }
 
     /// Returns `true` if the string is a valid email address.
     nonisolated
@@ -74,6 +76,15 @@ extension EmailAddress {
 
         return true
     }
+}
+
+// MARK: - Internal
+
+extension EmailAddress {
+    /// Internal:
+    /// Email Address RegEx Validation Pattern.
+    nonisolated
+    private static let emailRegEx = #"^([a-zA-Z0-9!#$%&'*+-/=?^_.{}|~]{1,64})@([a-zA-Z0-9.-]+\.[a-zA-Z]{2,63})$"#
 }
 
 #endif
