@@ -13,7 +13,7 @@ let package = Package(
     ],
     dependencies: [
         // Testing-only dependencies
-        // .package(url: "https://github.com/orchetect/swift-testing-extensions", from: "0.3.0")
+        // .package(url: "https://github.com/orchetect/swift-testing-extensions", from: "0.3.1")
     ],
     targets: [
         .target(
